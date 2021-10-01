@@ -43,3 +43,9 @@ public:
     std::vector<Matrix*> weights; // the connection weights itself
     Scalar learningRate;
 };
+
+Scalar activationFunction(Scalar x);
+
+void ReadCSV(std::string filename, std::vector<RowVector*>& data);
+
+void genData(std::string filename);

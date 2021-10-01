@@ -2,14 +2,14 @@
  
 // don't forget to include out neural network
 #include "NeuralNetwork.hpp"
-#include "NeuralNetwork.h"
+// #include "NeuralNetwork.h"
  
 //... data generator code here
  
 typedef std::vector<RowVector*> data;
 int main()
 {
-    NeuralNetwork n({ 2, 3, 1 });
+    NeuralNetwork n({2,3,1});
     data in_dat, out_dat;
     genData("test");
     ReadCSV("test-in", in_dat);

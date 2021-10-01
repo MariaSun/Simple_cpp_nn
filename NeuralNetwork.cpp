@@ -75,6 +75,25 @@ void NeuralNetwork::calcErrors(RowVector& output)
     }
 }
 
+Scalar activationFunctionDerivative(Scalar x)
+{
+    return 1 - tanhf(x) * tanhf(x);
+}
+
+//Training
+void NeuralNetwork::train(std::vector<RowVector*> input_data, std::vector<RowVector*> output_data)
+{
+    for (uint i = 0; i < input_data.size(); i++) {
+        std::cout << "Input to neural network is : " << *input_data[i] << std::endl;
+        propagateForward(*input_data[i]);
+        std::cout << "Expected output is : " << *output_data[i] << std::endl;
+        std::cout << "Output produced is : " << *neuronLayers.back() << std::endl;
+        propagateBackward(*output_data[i]);
+        std::cout << "MSE : " << std::sqrt((*deltas.back()).dot((*deltas.back())) / deltas.back()->size()) << std::endl;
+    }
+}
+
+
 void NeuralNetwork::updateWeights()
 {
     // topology.size()-1 = weights.size()
@@ -111,24 +130,6 @@ void NeuralNetwork::propagateBackward(RowVector& output)
 Scalar activationFunction(Scalar x)
 {
     return tanhf(x);
-}
- 
-Scalar activationFunctionDerivative(Scalar x)
-{
-    return 1 - tanhf(x) * tanhf(x);
-}
-
-//Training
-void NeuralNetwork::train(std::vector<RowVector*> input_data, std::vector<RowVector*> output_data)
-{
-    for (uint i = 0; i < input_data.size(); i++) {
-        std::cout << "Input to neural network is : " << *input_data[i] << std::endl;
-        propagateForward(*input_data[i]);
-        std::cout << "Expected output is : " << *output_data[i] << std::endl;
-        std::cout << "Output produced is : " << *neuronLayers.back() << std::endl;
-        propagateBackward(*output_data[i]);
-        std::cout << "MSE : " << std::sqrt((*deltas.back()).dot((*deltas.back())) / deltas.back()->size()) << std::endl;
-    }
 }
 
 //Loading data

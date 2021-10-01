@@ -1,6 +1,7 @@
 // constructor of neural network class
 
-#include "NeuralNetwork.h"
+#include "NeuralNetwork.hpp"
+#include <string>
 
 NeuralNetwork::NeuralNetwork(std::vector<uint> topology, Scalar learningRate)
 {

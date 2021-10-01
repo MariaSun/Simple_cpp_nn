@@ -28,7 +28,7 @@ public:
     void updateWeights();
  
     // function to train the neural network give an array of data points
-    void train(std::vector<RowVector*> data);
+    void train(std::vector<RowVector*> input, std::vector<RowVector*> output);
  
     // storage objects for working of neural network
     /*

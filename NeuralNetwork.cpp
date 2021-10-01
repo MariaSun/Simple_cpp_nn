@@ -146,7 +146,7 @@ void ReadCSV(std::string filename, std::vector<RowVector*>& data)
     getline(file, line, '\n');
     std::stringstream ss(line);
     std::vector<Scalar> parsed_vec;
-    while (getline(ss, word, ', ')) {
+    while (getline(ss, word, ',')) {
         parsed_vec.push_back(Scalar(std::stof(&word[0])));
     }
     uint cols = parsed_vec.size();
@@ -161,7 +161,7 @@ void ReadCSV(std::string filename, std::vector<RowVector*>& data)
             std::stringstream ss(line);
             data.push_back(new RowVector(1, cols));
             uint i = 0;
-            while (getline(ss, word, ', ')) {
+            while (getline(ss, word, ',')) {
                 data.back()->coeffRef(i) = Scalar(std::stof(&word[0]));
                 i++;
             }

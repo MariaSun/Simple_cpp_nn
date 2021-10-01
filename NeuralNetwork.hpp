@@ -12,6 +12,8 @@ typedef Eigen::VectorXf ColVector;
 // neural network implementation class!
 class NeuralNetwork {
 public:
+
+    std::vector<uint> topology;
     // constructor
     NeuralNetwork(std::vector<uint> topology, Scalar learningRate = Scalar(0.005));
  

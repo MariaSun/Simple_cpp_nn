@@ -2,6 +2,7 @@
 
 #include "NeuralNetwork.hpp"
 #include <string>
+#include <fstream>
 
 NeuralNetwork::NeuralNetwork(std::vector<uint> topology, Scalar learningRate)
 {
